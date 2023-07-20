@@ -6,11 +6,18 @@
         body {
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
             height: 100vh;
             background: #000;
             padding-top: 100px;
+            color:white;
+        }
+        h1 {
+            padding-bottom:50px;
+        }
+        p {
+            font-size: 20px;
+            padding-bottom: 20px;
         }
         #outerCircle {
             position: relative;
@@ -33,7 +40,7 @@
         .control {
             display: flex;
             justify-content: space-between;
-            width: 200px;
+            width: 250px;
             color: #fff;
             margin-bottom: 10px;
             opacity: 0.8;
@@ -67,6 +74,8 @@
     </style>
 </head>
 <body>
+    <h1>Breathing Assistant</h1>
+    <p>Select a preset breathing time or choose your own</p>
     <div class="control">
         <select id="presetSelect">
             <!-- preset options will be added dynamically -->
@@ -148,7 +157,9 @@
                 console.log(`Initial times: inhaleTime=${inhaleTime}, hold1Time=${hold1Time}, exhaleTime=${exhaleTime}, hold2Time=${hold2Time}`);
 
                 if (event && event.type === 'input') {
-                    presetSelect.value = 'Custom';
+                    const customOption = Array.from(presetSelect.options).find(option => option.text === 'Custom');
+                    customOption.value = `${inhaleTime},${hold1Time},${exhaleTime},${hold2Time}`;
+                    presetSelect.value = customOption.value;
                 } else if (presetSelect.value !== 'Custom') {
                     [inhaleTime, hold1Time, exhaleTime, hold2Time] = presetSelect.value.split(',').map(Number);
                     inhaleSlider.value = inhaleTime;
