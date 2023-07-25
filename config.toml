@@ -1,4 +1,4 @@
-baseURL = 'asolanki.github.io'
+baseURL = '/'
 languageCode = "en"
 defaultContentLanguage = "en"
 title = "Adarsh's page"
