@@ -1,4 +1,7 @@
 baseURL = '/'
+uglyURLs = true 
+relativeURLs = true
+
 languageCode = "en"
 defaultContentLanguage = "en"
 title = "Adarsh's page"

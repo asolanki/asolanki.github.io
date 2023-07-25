@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  
+  
+  <link rel="canonical" href="asolanki.github.io/2023/breathe/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Meditation / Breath Timer | Adarsh&#39;s page
+       
+  </title>
+  <meta name="title" content="Meditation / Breath Timer | Adarsh&#39;s page">
+    
+  
+  <link rel="stylesheet" href="/asolanki.github.io/font/iconfont.css">
+  <link rel="stylesheet" href="/asolanki.github.io/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Meditation / Breath Timer"/>
+<meta name="twitter:description" content=" Select a preset breathing time or choose your own
+Inhale: Hold after inhale: Exhale: Hold after exhale: "/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Meditation \/ Breath Timer",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "asolanki.github.io\/2023\/breathe\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "asolanki.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  
+  "wordcount":  17 ,
+  "url": "asolanki.github.io\/2023\/breathe\/",
+  "datePublished": "2023-07-24T15:33:42-07:00",
+  "dateModified": "2023-07-24T15:33:42-07:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Adarsh Solanki",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "asolanki.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Adarsh Solanki"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="asolanki.github.io">Adarsh&#39;s page</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="asolanki.github.io/posts/" title="">Posts</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="asolanki.github.io">Adarsh&#39;s page</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="asolanki.github.io/posts/" title="">Posts</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">Meditation / Breath Timer</h1>
+        <div class="post-meta">
+            
+                <span class="post-time">
+                    on 
+                    <time datetime=2023-07-24 >24 July 2023</time>
+                </span>
+                in
+                
+                <i class="iconfont icon-timer"></i>
+                1 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+<div class="breathe-container">
+    <p class="breathe-p">Select a preset breathing time or choose your own</p>
+    <div class="control">
+        <select id="presetSelect">
+            <!-- preset options will be added dynamically -->
+        </select>
+    </div>
+    <div class="control">
+        <label for="inhale">Inhale:</label>
+        <span id="inhale-label"></span>
+        <input type="range" id="inhale" min="0" max="20" value="2">
+    </div>
+    <div class="control">
+        <label for="hold1">Hold after inhale:</label>
+        <span id="hold1-label"></span>
+        <input type="range" id="hold1" min="0" max="20" value="1">
+    </div>
+    <div class="control">
+        <label for="exhale">Exhale:</label>
+        <span id="exhale-label"></span>
+        <input type="range" id="exhale" min="0" max="20" value="2">
+    </div>
+    <div class="control">
+        <label for="hold2">Hold after exhale:</label>
+        <span id="hold2-label"></span>
+        <input type="range" id="hold2" min="0" max="20" value="1">
+    </div>
+    <div id="outerCircle">
+        <div id="circle"></div>
+        <div id="countdown"></div>
+    </div>
+</div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const circle = document.getElementById('circle');
+            const countdown = document.getElementById('countdown');
+            const inhaleSlider = document.getElementById('inhale');
+            const hold1Slider = document.getElementById('hold1');
+            const exhaleSlider = document.getElementById('exhale');
+            const hold2Slider = document.getElementById('hold2');
+            const inhaleLabel = document.getElementById('inhale-label');
+            const hold1Label = document.getElementById('hold1-label');
+            const exhaleLabel = document.getElementById('exhale-label');
+            const hold2Label = document.getElementById('hold2-label');
+            const presetSelect = document.getElementById('presetSelect');
+        
+            const presets = {
+                'Custom': '2,1,2,1',
+                '4-4-4-0': '4,4,4,0',
+                '4-0-10-0': '4,0,10,0',
+                '4-7-8-0': '4,7,8,0'
+            };
+        
+            Object.keys(presets).forEach((key) => {
+                const option = document.createElement('option');
+                option.text = key;
+                option.value = presets[key];
+                presetSelect.add(option);
+            });
+        
+            let timerId;
+            let inhaleTime, hold1Time, exhaleTime, hold2Time;
+        
+            inhaleSlider.addEventListener('input', updateBreathingTimes);
+            hold1Slider.addEventListener('input', updateBreathingTimes);
+            exhaleSlider.addEventListener('input', updateBreathingTimes);
+            hold2Slider.addEventListener('input', updateBreathingTimes);
+            presetSelect.addEventListener('change', updateBreathingTimes);
+        
+            updateBreathingTimes();
+        
+        
+
+            function updateBreathingTimes(event) {
+                console.log("Update breathing times called");
+
+                inhaleTime = +inhaleSlider.value;
+                hold1Time = +hold1Slider.value;
+                exhaleTime = +exhaleSlider.value;
+                hold2Time = +hold2Slider.value;
+
+                console.log(`Initial times: inhaleTime=${inhaleTime}, hold1Time=${hold1Time}, exhaleTime=${exhaleTime}, hold2Time=${hold2Time}`);
+
+                if (event && event.type === 'input') {
+                    const customOption = Array.from(presetSelect.options).find(option => option.text === 'Custom');
+                    customOption.value = `${inhaleTime},${hold1Time},${exhaleTime},${hold2Time}`;
+                    presetSelect.value = customOption.value;
+                } else if (presetSelect.value !== 'Custom') {
+                    [inhaleTime, hold1Time, exhaleTime, hold2Time] = presetSelect.value.split(',').map(Number);
+                    inhaleSlider.value = inhaleTime;
+                    hold1Slider.value = hold1Time;
+                    exhaleSlider.value = exhaleTime;
+                    hold2Slider.value = hold2Time;
+                }
+
+                console.log(`After applying presets: inhaleTime=${inhaleTime}, hold1Time=${hold1Time}, exhaleTime=${exhaleTime}, hold2Time=${hold2Time}`);
+
+                inhaleLabel.textContent = inhaleTime + 's';
+                hold1Label.textContent = hold1Time + 's';
+                exhaleLabel.textContent = exhaleTime + 's';
+                hold2Label.textContent = hold2Time + 's';
+
+                let totalTime = inhaleTime + hold1Time + exhaleTime + hold2Time;
+                let styleSheet = Array.from(document.styleSheets).find(s => s.title === 'dynamic');
+
+                if (!styleSheet) {
+                    let style = document.createElement('style');
+                    style.title = 'dynamic';
+                    document.head.appendChild(style);
+                    styleSheet = Array.from(document.styleSheets).find(s => s.title === 'dynamic');
+                }
+
+                if (styleSheet.cssRules.length > 0) {
+                    styleSheet.deleteRule(0);
+                }
+
+                styleSheet.insertRule(`
+                    @keyframes breathe {
+                        0% { transform: scale(0.5); }
+                        ${inhaleTime / totalTime * 100}% { transform: scale(1); }
+                        ${(inhaleTime + hold1Time) / totalTime * 100}% { transform: scale(1); }
+                        ${(inhaleTime + hold1Time + exhaleTime) / totalTime * 100}% { transform: scale(0.5); }
+                        ${(inhaleTime + hold1Time + exhaleTime + hold2Time) / totalTime * 100}% { transform: scale(0.5); }
+                        100% { transform: scale(0.5); }
+                    }
+                `, 0);
+
+                circle.style.animation = 'none';
+                circle.offsetHeight;
+                circle.style.animation = `breathe ${totalTime}s ease-in-out infinite`;
+
+                startCountdown(inhaleTime, hold1Time, exhaleTime, hold2Time);
+            }
+
+
+            function startCountdown(inhale, hold1, exhale, hold2) {
+                let phase = 0;
+                let phaseTime = [inhale, hold1, exhale, hold2][phase] * 1000;
+                let start = null;
+        
+                function step(timestamp) {
+                    if (!start) start = timestamp;
+                    var progress = timestamp - start;
+                    
+                    if (progress > phaseTime) {
+                        phase = (phase + 1) % 4;
+                        phaseTime = [inhale, hold1, exhale, hold2][phase] * 1000;
+                        start = timestamp;
+                        progress = 0;
+                    }
+                    
+                    countdown.textContent = Math.ceil((phaseTime - progress) / 1000);
+                    requestAnimationFrame(step);
+                }
+            
+                timerId = requestAnimationFrame(step);
+            }
+        });
+    </script>
+         
+        
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Adarsh Solanki </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>17</span>
+            </p>
+
+            <p class="copyright-item">
+                
+                <span>Share:</span>
+                <span>
+
+      
+        <a href="//twitter.com/share?url=asolanki.github.io%2f2023%2fbreathe%2f&amp;text=Meditation%20%2f%20Breath%20Timer&amp;via=adarshsolanki" target="_blank" title="Share on Twitter">
+          <i class="iconfont icon-twitter"></i>
+        </a>
+        
+      
+      
+        <a href="//www.facebook.com/sharer/sharer.php?u=asolanki.github.io%2f2023%2fbreathe%2f" target="_blank" title="Share on Facebook">
+          <i class="iconfont icon-facebook"></i>
+        </a>
+        
+      
+      
+      
+      
+        <a href="//www.linkedin.com/shareArticle?url=asolanki.github.io%2f2023%2fbreathe%2f&amp;title=Meditation%20%2f%20Breath%20Timer" target="_blank" title="Share on LinkedIn">
+          <i class="iconfont icon-linkedin"></i>
+        </a>
+        
+      
+      
+        
+      
+        
+      
+
+          
+
+          
+
+          
+
+          
+
+</span>
+                
+            </p>
+
+
+    </div>
+
+  
+    <div class="post-tags">
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="asolanki.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+          
+
+ 
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2023 - 2023</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="asolanki.github.io">Adarsh Solanki</a> </span>
+         
+
+		  
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/asolanki.github.io/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>
