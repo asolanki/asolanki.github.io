@@ -1,0 +1,167 @@
+---
+title: "Meditation / Breath Timer"
+date: 2023-07-24T15:33:42-07:00
+draft: true
+---
+
+<div class="breathe-container">
+    <p class="breathe-p">Select a preset breathing time or choose your own</p>
+    <div class="control">
+        <select id="presetSelect">
+            <!-- preset options will be added dynamically -->
+        </select>
+    </div>
+    <div class="control">
+        <label for="inhale">Inhale:</label>
+        <span id="inhale-label"></span>
+        <input type="range" id="inhale" min="0" max="20" value="2">
+    </div>
+    <div class="control">
+        <label for="hold1">Hold after inhale:</label>
+        <span id="hold1-label"></span>
+        <input type="range" id="hold1" min="0" max="20" value="1">
+    </div>
+    <div class="control">
+        <label for="exhale">Exhale:</label>
+        <span id="exhale-label"></span>
+        <input type="range" id="exhale" min="0" max="20" value="2">
+    </div>
+    <div class="control">
+        <label for="hold2">Hold after exhale:</label>
+        <span id="hold2-label"></span>
+        <input type="range" id="hold2" min="0" max="20" value="1">
+    </div>
+    <div id="outerCircle">
+        <div id="circle"></div>
+        <div id="countdown"></div>
+    </div>
+</div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const circle = document.getElementById('circle');
+            const countdown = document.getElementById('countdown');
+            const inhaleSlider = document.getElementById('inhale');
+            const hold1Slider = document.getElementById('hold1');
+            const exhaleSlider = document.getElementById('exhale');
+            const hold2Slider = document.getElementById('hold2');
+            const inhaleLabel = document.getElementById('inhale-label');
+            const hold1Label = document.getElementById('hold1-label');
+            const exhaleLabel = document.getElementById('exhale-label');
+            const hold2Label = document.getElementById('hold2-label');
+            const presetSelect = document.getElementById('presetSelect');
+        
+            const presets = {
+                'Custom': '2,1,2,1',
+                '4-4-4-0': '4,4,4,0',
+                '4-0-10-0': '4,0,10,0',
+                '4-7-8-0': '4,7,8,0'
+            };
+        
+            Object.keys(presets).forEach((key) => {
+                const option = document.createElement('option');
+                option.text = key;
+                option.value = presets[key];
+                presetSelect.add(option);
+            });
+        
+            let timerId;
+            let inhaleTime, hold1Time, exhaleTime, hold2Time;
+        
+            inhaleSlider.addEventListener('input', updateBreathingTimes);
+            hold1Slider.addEventListener('input', updateBreathingTimes);
+            exhaleSlider.addEventListener('input', updateBreathingTimes);
+            hold2Slider.addEventListener('input', updateBreathingTimes);
+            presetSelect.addEventListener('change', updateBreathingTimes);
+        
+            updateBreathingTimes();
+        
+        
+
+            function updateBreathingTimes(event) {
+                console.log("Update breathing times called");
+
+                inhaleTime = +inhaleSlider.value;
+                hold1Time = +hold1Slider.value;
+                exhaleTime = +exhaleSlider.value;
+                hold2Time = +hold2Slider.value;
+
+                console.log(`Initial times: inhaleTime=${inhaleTime}, hold1Time=${hold1Time}, exhaleTime=${exhaleTime}, hold2Time=${hold2Time}`);
+
+                if (event && event.type === 'input') {
+                    const customOption = Array.from(presetSelect.options).find(option => option.text === 'Custom');
+                    customOption.value = `${inhaleTime},${hold1Time},${exhaleTime},${hold2Time}`;
+                    presetSelect.value = customOption.value;
+                } else if (presetSelect.value !== 'Custom') {
+                    [inhaleTime, hold1Time, exhaleTime, hold2Time] = presetSelect.value.split(',').map(Number);
+                    inhaleSlider.value = inhaleTime;
+                    hold1Slider.value = hold1Time;
+                    exhaleSlider.value = exhaleTime;
+                    hold2Slider.value = hold2Time;
+                }
+
+                console.log(`After applying presets: inhaleTime=${inhaleTime}, hold1Time=${hold1Time}, exhaleTime=${exhaleTime}, hold2Time=${hold2Time}`);
+
+                inhaleLabel.textContent = inhaleTime + 's';
+                hold1Label.textContent = hold1Time + 's';
+                exhaleLabel.textContent = exhaleTime + 's';
+                hold2Label.textContent = hold2Time + 's';
+
+                let totalTime = inhaleTime + hold1Time + exhaleTime + hold2Time;
+                let styleSheet = Array.from(document.styleSheets).find(s => s.title === 'dynamic');
+
+                if (!styleSheet) {
+                    let style = document.createElement('style');
+                    style.title = 'dynamic';
+                    document.head.appendChild(style);
+                    styleSheet = Array.from(document.styleSheets).find(s => s.title === 'dynamic');
+                }
+
+                if (styleSheet.cssRules.length > 0) {
+                    styleSheet.deleteRule(0);
+                }
+
+                styleSheet.insertRule(`
+                    @keyframes breathe {
+                        0% { transform: scale(0.5); }
+                        ${inhaleTime / totalTime * 100}% { transform: scale(1); }
+                        ${(inhaleTime + hold1Time) / totalTime * 100}% { transform: scale(1); }
+                        ${(inhaleTime + hold1Time + exhaleTime) / totalTime * 100}% { transform: scale(0.5); }
+                        ${(inhaleTime + hold1Time + exhaleTime + hold2Time) / totalTime * 100}% { transform: scale(0.5); }
+                        100% { transform: scale(0.5); }
+                    }
+                `, 0);
+
+                circle.style.animation = 'none';
+                circle.offsetHeight;
+                circle.style.animation = `breathe ${totalTime}s ease-in-out infinite`;
+
+                startCountdown(inhaleTime, hold1Time, exhaleTime, hold2Time);
+            }
+
+
+            function startCountdown(inhale, hold1, exhale, hold2) {
+                let phase = 0;
+                let phaseTime = [inhale, hold1, exhale, hold2][phase] * 1000;
+                let start = null;
+        
+                function step(timestamp) {
+                    if (!start) start = timestamp;
+                    var progress = timestamp - start;
+                    
+                    if (progress > phaseTime) {
+                        phase = (phase + 1) % 4;
+                        phaseTime = [inhale, hold1, exhale, hold2][phase] * 1000;
+                        start = timestamp;
+                        progress = 0;
+                    }
+                    
+                    countdown.textContent = Math.ceil((phaseTime - progress) / 1000);
+                    requestAnimationFrame(step);
+                }
+            
+                timerId = requestAnimationFrame(step);
+            }
+        });
+    </script>
+         
+        
