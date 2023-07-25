@@ -1,0 +1,4 @@
+[submodule "themes/KeepIt"]
+    path = themes/KeepIt
+    url = git://github.com/Fastbyte01/KeepIt
+
