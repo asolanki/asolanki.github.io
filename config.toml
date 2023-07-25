@@ -25,19 +25,19 @@ googleAnalytics = ""
 
 [menu]
   [[menu.main]]
-    name = "Blog"
+    name = "Posts"
     url = "/posts/"
     weight = 1
 
-  [[menu.main]]
-    name = "Categories"
-    url = "/categories/"
-    weight = 3
+  # [[menu.main]]
+  #   name = "Categories"
+  #   url = "/categories/"
+  #   weight = 3
 
-  [[menu.main]]
-    name = "About"
-    url = "/about"
-    weight = 4
+  # [[menu.main]]
+  #   name = "About"
+  #   url = "/about"
+  #   weight = 4
 
 [params]
     since = 2023
@@ -142,10 +142,10 @@ Linkedin = true
 copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License."
 
 [author]
-  name = "Fastbyte01"
+  name = "Adarsh Solanki"
 
   [params.publisher]
-    name = "Fastbyte01"
+    name = "Adarsh Solanki"
 
     [params.publisher.logo]
       url = "logo.png"
